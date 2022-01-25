@@ -22,13 +22,13 @@ export default function NavBar() {
 
 const styles = StyleSheet.create({
   navigation: {
-    height: Platform.OS === 'ios' ? '9%' : '9%',
+    height: Platform.OS === 'ios' ? '8%' : '8%',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     backgroundColor: Themes.light.navigation,
     paddingLeft: '5%',
-    paddingRight: '5%'
+    paddingRight: '5%',
   },
   navigationItem: {
     width: '25%',

@@ -1,4 +1,5 @@
 import { StyleSheet, Text, ImageBackground } from 'react-native';
+import Constants from '../Constants';
 
 export default function ProfileCard({profile}) {
   return (
@@ -12,9 +13,11 @@ export default function ProfileCard({profile}) {
 const styles = StyleSheet.create({
   profileCardContainer: {
     width: '86%',
-    height: undefined,
-    margin: '3%',
+    height: 'auto',
     aspectRatio: 1/1.1,
+    maxWidth: Constants.maxWidth,
+    maxHeight: Constants.maxWidth * 1.1,
+    marginBottom: '3%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',

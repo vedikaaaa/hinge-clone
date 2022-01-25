@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { Icons } from '../assets/Themes';
+import Constants from '../Constants';
 
 export default function AudioCard() {
   return (
@@ -17,6 +18,7 @@ const styles = StyleSheet.create({
   audioCardContainer: {
     width: '86%',
     height: '25%',
+    maxWidth: Constants.maxWidth,
     borderRadius: 32,
     margin: '2%',
     padding: '4%',

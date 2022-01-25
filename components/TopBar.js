@@ -1,35 +1,51 @@
-import { StyleSheet, Text, Platform, SafeAreaView, Image } from 'react-native';
+import { StyleSheet, Text, Platform, View, SafeAreaView, Image, Dimensions } from 'react-native';
+import Constants from '../Constants';
 import { Icons } from '../assets/Themes';
 
 export default function TopBar() {
   return (
-    <SafeAreaView style={styles.topBar}>
-      <Image source={Icons.menu.light} style={styles.topBarIcon}/>
-        <Text style={styles.topBarText}>
-          ensom
-        </Text>
-      <Image source={Icons.sun} style={styles.topBarIcon}/>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.topBar}>
+        <Image source={Icons.menu.light} style={styles.topBarIcon}/>
+          <Text style={styles.topBarText}>
+            ensom
+          </Text>
+        <Image source={Icons.sun} style={styles.topBarIcon}/>
+      </View>
     </SafeAreaView>
   );
 }
 
+function calculateHeight() {
+  if(Dimensions.get('screen').width > Constants.tabletWidth) {
+    return '10%';
+  }
+
+  return Platform.OS === 'ios' ? '12%' : '12%';
+}
+
 const styles = StyleSheet.create({
-  topBar: {
-    height: Platform.OS === 'ios' ? '12%' : '10%',
+  container: {
+    height: calculateHeight(),
     marginLeft: '5%',
     marginRight: '5%',
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+  },
+  topBar: {
+    height: '100%',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: Platform.OS === 'ios' ? 'center' : 'flex-end',
   },
   topBarIcon: {
-    height: '100%',
     width: '12%',
-    resizeMode: 'contain'
+    height: Platform.OS === 'ios' ? '100%' : '50%',
+    resizeMode: 'contain',
   },
   topBarText: {
     fontFamily: 'Sydney-Bold',
-    fontSize: 36
+    fontSize: Dimensions.get('screen').width > Constants.tabletWidth ? 60 : 36,
   },
 })

@@ -1,7 +1,7 @@
 import AppLoading from 'expo-app-loading';
 import { StyleSheet, View, StatusBar, ScrollView } from 'react-native';
 import { useFonts } from 'expo-font';
-import { Themes, Profiles, Icons } from './assets/Themes';
+import { Themes, Profiles } from './assets/Themes';
 import TopBar from './components/TopBar'
 import ProfileCard from './components/ProfileCard'
 import AudioCard from './components/AudioCard'
@@ -17,21 +17,13 @@ export default function App() {
   StatusBar.setBarStyle(Themes.light.statusBar);
   /* ^Don't mind/edit this one either unless you decide to do the dark theme one, in that case, you will have to change it accordingly*/
 
-  /* insert your code here */
-
-  /**
-   * Scrolling doesn't work.
-   * How to scale text on tablet?
-   * How to scale profile card size on tablet?
-   */
-
   return (
     <View style={styles.container}>
       <TopBar></TopBar>
-      <ScrollView contentContainerStyle={styles.scrollView}>
+      <View style={styles.content}>
         <ProfileCard profile={Profiles.mtl}></ProfileCard>
         <AudioCard></AudioCard>
-      </ScrollView>
+      </View>
       <NavBar></NavBar>
     </View>
   );
@@ -39,14 +31,17 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: Themes.light.bg,
-  },
-  scrollView: {
-    flexGrow: 1,
     display: 'flex',
+    flex: 1,
+    backgroundColor: Themes.light.bg
+  },
+  content: {
+    display: 'flex',
+    flexGrow: 1,
+    flexShrink: 2,
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    alignItems: 'center'
+    alignItems: 'center',
+    padding: '3%'
   }
 });
